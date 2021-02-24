@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8"/>
+  <title>
+    Resolve
+  </title>
+  <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no' name='viewport' />
+  <!--     Fonts and icons     -->
+  <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700|Material+Icons" />
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <!-- CSS Files -->
+  <link href="/assets/material-dashboard.css?v=2.1.0" rel="stylesheet" />
+  <!-- CSS Just for demo purpose, don't include it in your project -->
+  <link href="/assets/demo.css" rel="stylesheet" />
+</head>
+<body class="dark-edition">
+  <div class="wrapper ">
+    <div class="sidebar" data-color="purple" data-background-color="black" data-image="../assets/img/sidebar-2.jpg">
+      <div class="logo"><a href="/" class="simple-text logo-normal">
+          Resolve
+        </a></div>
+      <div class="sidebar-wrapper">
+        <ul class="nav">
+          <li class="nav-item active">
+            <a class="nav-link " href="/">
+              <i class="material-icons">home</i>
+              <p>Dashboard</p>
+            </a>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link" href="/project">
+              <i class="material-icons">work</i>
+              <p>Project</p>
+            </a>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link" href="/profile">
+              <i class="material-icons">account_circle</i>
+              <p>Profile</p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/logout">
+              <i class="material-icons">login</i>
+              <p>logout</p>
+            </a>
+          </li>
+     
+        </ul>
+      </div>
+    </div>
+    <div class="main-panel">
+      <!-- Navbar -->
+      <nav class="navbar navbar-expand-lg navbar-transparent navbar-absolute fixed-top " id="navigation-example">
+        <div class="container-fluid">
+          <div class="collapse navbar-collapse justify-content-end">
+            <form class="navbar-form">
+              <div class="input-group no-border">
+                <input type="text" value="" class="form-control" placeholder="Search...">
+                <button type="submit" class="btn btn-default btn-round btn-just-icon">
+                  <i class="material-icons">search</i>
+                  <div class="ripple-container"></div>
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </nav>
+
+ <div class="content">
+        <div class="container-fluid">
+          <div class="row">
+            <div class="col-lg-3 col-md-6 col-sm-6">
+              <div class="card card-stats">
+                <div class="card-header card-header-warning card-header-icon">
+                  <div class="card-icon">
+                    <i class="material-icons">content_copy</i>
+                  </div>
+                  <p class="card-category">User</p>
+                  <h3 class="card-title"> <%= users %> 
+                    <small>user</small>
+                  </h3>
+                </div>
+                <div class="card-footer">
+                  <div class="stats">
+                    <i class="material-icons text-info">group_add</i>
+                    <a href="javascript:;">invite more...</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-3 col-md-6 col-sm-6">
+              <div class="card card-stats">
+                <div class="card-header card-header-success card-header-icon">
+                  <div class="card-icon">
+                    <i class="material-icons">store</i>
+                  </div>
+                  <p class="card-category">Your project</p>
+                  <% let projectNumber = 0; data.forEach((value, index, array) => {projectNumber++;}) %>
+                  <h3 class="card-title"><%= projectNumber %>  </h3>
+                </div>
+                <div class="card-footer">
+                  <div class="stats">
+                    <i class="material-icons text-info">work</i>
+                    <a href="/project">go to project...</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-3 col-md-6 col-sm-6">
+              <div class="card card-stats">
+                <div class="card-header card-header-success card-header-icon">
+                  <div class="card-icon">
+                    <i class="material-icons">check</i>
+                  </div>
+                  <p class="card-category">Task complete</p>
+                  <h3 class="card-title"><%= task.done %>/<%= task.all %></h3>
+                </div>
+                <div class="card-footer">
+                  <div class="stats">
+                    <% if(task.all == 0){ %>
+                    <i class="material-icons">autorenew</i> progress: 100%
+                    <% }else{ %> 
+                      <i class="material-icons">autorenew</i> progress: <%= Math.ceil((task.done/task.all)*100,-1) %>%
+                      <% } %> 
+
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-3 col-md-6 col-sm-6">
+              <div class="card card-stats">
+                <div class="card-header card-header-info card-header-icon">
+                  <div class="card-icon">
+                    <i class="fa fa-facebook"></i>
+                  </div>
+                  <p class="card-category">Contact us</p>
+                  <a target="_blank" href="https://www.facebook.com/nvtuehcmus" class="card-title">facebook</a>
+                  <a  href="tel:0329579782" class="card-title">032.957.9782</a>
+                </div>
+                <div class="card-footer">
+                  <div class="stats">
+                    <i class="material-icons">update</i> Just Updated
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-4">
+              <div class="card card-chart">
+                <div class="card-header card-header-success">
+                  <div class="ct-chart" id="dailySalesChart"></div>
+                </div>
+                <div class="card-body">
+                  <h4 class="card-title">Email valid</h4>
+                  <p class="card-category">
+                    <span class="text-success">your email valid, you are resolve member!</p>
+                </div>
+                <div class="card-footer">
+                  <div class="stats">
+                    <i class="material-icons">check</i> updated successfully
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="card card-chart">
+                <div class="card-header card-header-warning">
+                  <div class="ct-chart" id="websiteViewsChart"></div>
+                </div>
+                <div class="card-body">
+                  <% if(!user.name||!user.address||!user.position||!user.day_of_birth){ %>
+                    <h4 class="card-title">Information invalid</h4>
+                  <p class="card-category">you need to update your infomation</p>
+               <% }else{ %> 
+                <h4 class="card-title">Information valid</h4>
+                <p class="card-category">
+                  Information has been updated</p>
+                 <% } %> 
+                </div>
+                <div class="card-footer">
+                  <div class="stats">
+                    <i class="material-icons text-info">account_circle</i>
+                    <a href="/profile">see more...</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="card card-chart">
+                <div class="card-header card-header-danger">
+                  <div class="ct-chart" id="completedTasksChart"></div>
+                </div>
+                <div class="card-body">
+                  <h4 class="card-title">Buy pro version</h4>
+                  <p class="card-category">buy pro version to use notification, chart... </p>
+                </div>
+                <div class="card-footer">
+                  <div class="stats">
+                    <i class="material-icons text-info">shopping_cart</i>
+                    <a target="_blank" href="http://nvtue.info">buy now</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+         
+            <div class="col-lg-12 col-md-12">
+              <div class="card">
+                <div class="card-header card-header-warning">
+                  <h4 class="card-title">Project</h4>
+                  <p class="card-category">All project for you</p>
+                </div>
+                <div class="card-body table-responsive">
+                  <table class="table table-hover">
+                    <thead class="text-warning">
+                      <th>
+                          Id
+                        </th>
+                      <th>
+                        Name
+                      </th>
+                      <th>
+                        Description
+                      </th>
+                      <th>
+                          Role
+                        </th>
+                    </thead>
+                    <tbody>
+                        <% data.forEach((value,index) => { %>
+                          <tr>
+                              <td>
+                                  <%= index+1 %> 
+                                </td>
+                              <td>
+                                <%= value.name %> 
+                              </td>
+                              <td>
+                              <%= value.description %> 
+                              </td>
+                              <td>
+                                  <%= role[index].role %> 
+                                  </td>
+                            </tr>
+                       <% }) %> 
+                     
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+     
+    </div>
+  </div>
+  
+     
+  
+  <%- include('footer'); -%> 

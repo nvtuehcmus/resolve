@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8"/>
+  <title>
+    Resolve
+  </title>
+  <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no' name='viewport' />
+  <!--     Fonts and icons     -->
+  <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700|Material+Icons" />
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <!-- CSS Files -->
+  <link href="/assets/material-dashboard.css?v=2.1.0" rel="stylesheet" />
+  <!-- CSS Just for demo purpose, don't include it in your project -->
+  <link href="/assets/demo.css" rel="stylesheet" />
+</head>
+<body class="dark-edition">
+  <div class="wrapper ">
+    <div class="sidebar" data-color="purple" data-background-color="black" data-image="../assets/img/sidebar-2.jpg">
+      <div class="logo"><a href="/" class="simple-text logo-normal">
+          Resolve
+        </a></div>
+      <div class="sidebar-wrapper">
+        <ul class="nav">
+          <li class="nav-item ">
+            <a class="nav-link " href="/task/<%= data.projectId %>/<%= data.sprintId %>">
+              <i class="material-icons">home</i>
+              <p>Dashboard</p>
+            </a>
+          </li>
+
+          <li class="nav-item ">
+            <a class="nav-link" href="/task/<%= data.projectId %>/<%= data.sprintId %>/notStart">
+              <i class="material-icons">not_started</i>
+              <p>Not started</p>
+            </a>
+          </li>
+
+          <li class="nav-item ">
+            <a class="nav-link" href="/task/<%= data.projectId %>/<%= data.sprintId %>/inProgress">
+              <i class="material-icons">autorenew</i>
+              <p>In progress</p>
+            </a>
+          </li>
+
+          <li class="nav-item ">
+            <a class="nav-link" href="/task/<%= data.projectId %>/<%= data.sprintId %>/interalReview">
+              <i class="material-icons">preview</i>
+              <p>Interal review</p>
+            </a>
+          </li>
+
+          <li class="nav-item active">
+            <a class="nav-link" href="/task/<%= data.projectId %>/<%= data.sprintId %>/bussinessReview">
+              <i class="material-icons">business</i>
+              <p>Bussiness logic review</p>
+            </a>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link" href="/task/<%= data.projectId %>/<%= data.sprintId %>/codeReview">
+              <i class="material-icons">code</i>
+              <p>Code review</p>
+            </a>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link" href="/task/<%= data.projectId %>/<%= data.sprintId %>/complete">
+              <i class="material-icons">done</i>
+              <p>complete</p>
+            </a>
+          </li>
+   
+
+
+
+       
+
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/sprint/<%= data.projectId %>">
+              <i class="material-icons">login</i>
+              <p>Back</p>
+            </a>
+          </li>
+     
+        </ul>
+      </div>
+    </div>
+    <div class="main-panel">
+      <!-- Navbar -->
+      <nav class="navbar navbar-expand-lg navbar-transparent navbar-absolute fixed-top " id="navigation-example">
+        <div class="container-fluid">
+          <div class="collapse navbar-collapse justify-content-end">
+            <form class="navbar-form">
+              <div class="input-group no-border">
+                <input type="text" value="" class="form-control" placeholder="Search...">
+                <button type="submit" class="btn btn-default btn-round btn-just-icon">
+                  <i class="material-icons">search</i>
+                  <div class="ripple-container"></div>
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </nav>
+
+ <div class="content">
+        <div class="container-fluid">
+
+         
+         
+            <div class="col-lg-12 col-md-12">
+              <div class="card">
+                <div class="card-header card-header-info">
+                  <h4 class="card-title">Not started</h4>
+                  <p class="card-category">All tasks that is not started</p>
+                </div>
+                <div class="card-body table-responsive"  style="max-height: 400px;">
+                  <table class="table table-hover">
+                    <thead class="text-warning">
+                      <th>
+                          Id
+                        </th>
+                      <th>
+                        Name
+                      </th>
+                      <th>
+                        Description
+                      </th>
+                      <th>
+                          Story point
+                        </th>
+                        <th>
+                          Assign
+                        </th>
+                        <% if(data.permission){ %> 
+                          <th>
+                         
+                          </th>
+                          <th>
+                         
+                        </th>
+                          <% } %> 
+                 
+                    </thead>
+                    <tbody>
+                        <% if(data.tasks){ %> 
+                      <%  data.tasks.forEach((value,index) => { %>
+                          <tr id="currentValue">
+                              <td>
+                                   <%= index+1 %>  
+                                </td>
+                              <td>
+                                <%= value.name %>  
+                              </td>
+                              <td>
+                                <%= value.description %> 
+                              </td>
+                              <td>
+                                <%= value.story_point %> 
+                              </td>
+                              <td>
+                                <%= data.assigns[index].name %> 
+                              </td>
+                              <td >
+                                <a href="/task/<%= data.projectId %>/<%= data.sprintId %>/<%= value.id %>/reject">
+                                  <button type="button" style="padding:0" rel="tooltip" title="reject" class="btn btn-danger btn-link btn-sm">   
+                                 <i class="material-icons">undo</i>
+                                </button> </a>
+                              </td>
+                              <td >
+                                <a href="/task/<%= data.projectId %>/<%= data.sprintId %>/<%= value.id %>/done">
+                                  <button type="button" style="padding:0" rel="tooltip" title="done" class="btn btn-success btn-link btn-sm">   
+                                 <i class="material-icons">done</i>
+                                </button> </a>
+                              </td>
+                            </tr>
+                       <% }) %> 
+                       <% } %> 
+                      
+                     
+                    </tbody>
+                  </table>
+
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+     
+    </div>
+  </div>
+  
+     
+  
+  <%- include('footer'); -%> 

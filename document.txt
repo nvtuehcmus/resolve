@@ -1,0 +1,29 @@
+About resolve!
+Resolve is a Project management application built by Nodejs, Resolve will long time support and developing.
+
+
+How to run resolve application
+
+I) Setup project
+step 1: clone source code from github
+
+step 2: make sure nodejs 14 runing on your pc, type "npm i" or "yarn" to download package to project
+
+step 3: create database follow file db.sql or not. We will push that to RDS AWS but not yet
+-local , open ".env" change CONECTION maping to database on your local and then using pg_dump to restore.
+
+step 4: make sure ".env" that is define	some secret information like mail,host,secret key, etc... file really exists on project, contact Nguyen Van Tue to get more info
+
+
+
+II) Run project
+step 1: access to address http://localhost:4000 or http://<your ip address>:4000 the resolve will runing on port 4000, if port 4000 is already in use,
+please stop progress and try again ( you can kill progress or restart your PC ).
+
+step 2: register your account 
+server will send to you comfirm email.
+EXTENTION: you have to verify the email on your pc that is runing Resolve because we are hard code to email with localhost and port 4000
+
+step 3: userName:"nvtuehcmus@gmail.com" pwd:"12345678" that is account with full data seeded, you can use that to test faster
+
+step 4: Enjoy resolve !

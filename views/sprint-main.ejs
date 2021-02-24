@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8"/>
+  <title>
+    Resolve
+  </title>
+  <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no' name='viewport' />
+  <!--     Fonts and icons     -->
+  <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700|Material+Icons" />
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <!-- CSS Files -->
+  <link href="/assets/material-dashboard.css?v=2.1.0" rel="stylesheet" />
+  <!-- CSS Just for demo purpose, don't include it in your project -->
+  <link href="/assets/demo.css" rel="stylesheet" />
+</head>
+<body class="dark-edition">
+  <div class="wrapper ">
+    <div class="sidebar" data-color="purple" data-background-color="black" data-image="../assets/img/sidebar-2.jpg">
+      <div class="logo"><a href="/" class="simple-text logo-normal">
+          Resolve
+        </a></div>
+      <div class="sidebar-wrapper">
+        <ul class="nav">
+          <li class="nav-item active">
+            <a class="nav-link " href="/task/<%= data.projectId %>/<%= data.sprintId %>">
+              <i class="material-icons">home</i>
+              <p>Dashboard</p>
+            </a>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link" href="/task/<%= data.projectId %>/<%= data.sprintId %>/notStart">
+              <i class="material-icons">not_started</i>
+              <p>Not started</p>
+            </a>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link" href="/task/<%= data.projectId %>/<%= data.sprintId %>/inProgress">
+              <i class="material-icons">autorenew</i>
+              <p>In progress</p>
+            </a>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link" href="/task/<%= data.projectId %>/<%= data.sprintId %>/interalReview">
+              <i class="material-icons">preview</i>
+              <p>Interal review</p>
+            </a>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link" href="/task/<%= data.projectId %>/<%= data.sprintId %>/bussinessReview">
+              <i class="material-icons">business</i>
+              <p>Bussiness logic review</p>
+            </a>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link" href="/task/<%= data.projectId %>/<%= data.sprintId %>/codeReview">
+              <i class="material-icons">code</i>
+              <p>Code review</p>
+            </a>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link" href="/task/<%= data.projectId %>/<%= data.sprintId %>/complete">
+              <i class="material-icons">done</i>
+              <p>complete</p>
+            </a>
+          </li>
+   
+
+
+
+       
+
+          
+          <li class="nav-item">
+            <a class="nav-link" href="/sprint/<%= data.projectId %>">
+              <i class="material-icons">login</i>
+              <p>Back</p>
+            </a>
+          </li>
+     
+        </ul>
+      </div>
+    </div>
+    <div class="main-panel">
+      <!-- Navbar -->
+      <nav class="navbar navbar-expand-lg navbar-transparent navbar-absolute fixed-top " id="navigation-example">
+        <div class="container-fluid">
+          <div class="collapse navbar-collapse justify-content-end">
+            <form class="navbar-form">
+              <div class="input-group no-border">
+                <input type="text" value="" class="form-control" placeholder="Search...">
+                <button type="submit" class="btn btn-default btn-round btn-just-icon">
+                  <i class="material-icons">search</i>
+                  <div class="ripple-container"></div>
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </nav>
+
+ <div class="content">
+        <div class="container-fluid">
+          <div class="row">
+            <div class="col-lg-3 col-md-6 col-sm-6">
+              <div class="card card-stats">
+                <div class="card-header card-header-warning card-header-icon">
+                  <div class="card-icon">
+                    <i class="material-icons">not_started</i>
+                  </div>
+                  <p class="card-category">Not started</p>
+                  <h4 class="card-title">  <%= data.notStart %>   
+                    <small>tasks</small>
+                  </h4>
+                </div>
+                <div class="card-footer">
+              </div>
+            </div>
+            </div>
+            <div class="col-lg-3 col-md-6 col-sm-6">
+              <div class="card card-stats">
+                <div class="card-header card-header-primary card-header-icon">
+                  <div class="card-icon">
+                    <i class="material-icons">autorenew</i>
+                  </div>
+                  <p class="card-category">In progress</p>
+                 
+                  <h4 class="card-title">  <%= data.inProgress %>   
+                    <small>tasks</small>
+                  </h4>
+                </div>
+                <div class="card-footer">
+                 
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-3 col-md-6 col-sm-6">
+              <div class="card card-stats">
+                <div class="card-header card-header-info card-header-icon">
+                  <div class="card-icon">
+                    <i class="material-icons">remove_red_eye
+                    </i>
+                  </div>
+                  <p class="card-category">Interal preview</p>
+                  <h4 class="card-title"> <%= data.internalPreview %>   
+                    <small>tasks</small>
+                  </h4>
+                </div>
+                <div class="card-footer">
+
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-3 col-md-6 col-sm-6">
+              <div class="card card-stats">
+                <div class="card-header card-header-success card-header-icon">
+                  <div class="card-icon">
+                    <i class="material-icons">done</i>
+                  </div>
+                  <p class="card-category">Complete</p>
+                  <h4 class="card-title"> <%= data.complete %>   
+                    <small>tasks</small>
+                  </h4>
+                </div>
+                <div class="card-footer"></div>
+              </div>
+            </div>
+          </div>
+         
+         
+            <div class="col-lg-12 col-md-12">
+              <div class="card">
+                <div class="card-header card-header-info">
+                  <h4 class="card-title">Task</h4>
+                  <p class="card-category">All tasks in that sprint</p>
+                </div>
+                <div class="card-body table-responsive"  style="max-height: 400px;">
+                  <table class="table table-hover">
+                    <thead class="text-warning">
+                      <th>
+                          Id
+                        </th>
+                      <th>
+                        Name
+                      </th>
+                      <th>
+                        Description
+                      </th>
+                      <th>
+                          Story point
+                        </th>
+                        <th>
+                          Assign
+                        </th>
+                        <% if(data.permission){ %> 
+                          <th>
+                         
+                          </th>
+                          <% } %> 
+                 
+                    </thead>
+                    <tbody>
+                      <%  data.tasks.forEach((value,index) => { %>
+                          <tr id="currentValue">
+                              <td>
+                                   <%= index+1 %>  
+                                </td>
+                              <td>
+                                <%= value.name %>  
+                              </td>
+                              <td>
+                                <%= value.description %> 
+                              </td>
+                              <td>
+                                <%= value.story_point %> 
+                              </td>
+                              <td>
+                                <%= data.assigns[index].name %> 
+                              </td>
+                              <% if(data.permission){ %> 
+                              <td >
+                                <a href="#edit-sprint">
+                                  <button type="button" onclick="bindEditSprint('currentValue')" style="padding:0" rel="tooltip" title="Edit" class="btn btn-primary btn-link btn-sm">   
+                                 <i class="material-icons">edit</i>
+                                </button> </a>
+                              </td>
+                              <div id="edit-sprint" class="create-project overlay">
+                                <div class="create-project-body">
+                                  <a class="create-project-close" href="#">
+                                    <button type="button" style="padding:0" rel="tooltip" title="Close" class="btn btn-danger btn-link btn-sm">   
+                                      <i class="material-icons">close</i>
+                                     </button>
+                                  </a>
+                                 
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <label for="name">Name</label>
+                                            <input  type="text" id="name" name="sp_name" value="<%= value.name %> "  class="form-control" >
+                                          
+                                        </div>
+                                        <div class="col-md-4">
+                                          <label for="start">assign</label>
+                                          <input type="text" value="<%= data.assigns[index].name %>" onkeyup="Suggest(this,'list_assign')" id="assign" name="assign" class="form-control" >
+                                          <ul class="list_assign"  id="list_assign" style="position: fixed;z-index: 100;">
+                                          <% data.members.forEach((value, index, array) => { %>
+                                            <li onclick="getValue(this,'assign','list_asiign')"><%= value.name %> </li>
+                                        <% }) %>   
+                                          </ul>
+                                      </div>
+                                      <div class="col-md-2">
+                                        <label for="end">point</label>
+                                        <input value="<%= value.story_point %>"  type="number" id="end" name="end" class="form-control" >
+                                        
+                                    </div>
+                                    <div class="col-md-12">
+                                      <label for="description">Description</label>
+                                      <textarea name="description" id="description" style="font-size: 14px; border:0" cols="20" rows="5"><%= value.description %> 
+                                      </textarea>
+                                      <hr>
+                                      
+                                  </div>
+                                        <form action="/sprint/<%= data.projectId %>/create" method="POST">
+                                            <input id="sprintName" name="sprintName"  type="hidden">
+                                            <input id="sprintStart" name="sprintStart"  type="hidden">
+                                            <input id="sprintEnd" name="sprintEnd"  type="hidden">
+                                            <input id="sprintDescription" name="sprintDescription"  type="hidden">
+                                            <input class="btn btn-primary btn-round" onclick="createSprint()" style="height: 30px;width:100px; padding:2px; bottom:5px;right:6px;position: absolute;" id="submit"  name="submit" type="submit" value="Create">
+                                        </form>
+                                    </div>                          
+                                 
+                                </div>
+                            </div>
+                              <% } %> 
+                            </tr>
+                       <% }) %> 
+                       <tr>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td><a style="font-size:large;" href="#create-sprint">
+                          <button type="button" style="padding:0" rel="tooltip" title="Create task" class="btn btn-success btn-link btn-sm">   
+                            <i class="material-icons">add</i>
+                           </button>
+                        </a></td>
+                      </tr>
+                     
+                    </tbody>
+                  </table>
+                  <% if(data.permission){ %> 
+                    <div id="create-sprint" class="create-project overlay">
+                      <div class="create-project-body">
+                        <a class="create-project-close" href="#">
+                          <button type="button" style="padding:0" rel="tooltip" title="Close" class="btn btn-danger btn-link btn-sm">   
+                            <i class="material-icons">close</i>
+                           </button>
+                        </a>
+                       
+                          <div class="row">
+                              <div class="col-md-6">
+                                  <label for="name">Name</label>
+                                  <input  type="text" id="name" name="name"  class="form-control" >
+                                
+                              </div>
+                              <div class="col-md-4">
+                                <label for="assign">assign</label>
+                                <input type="text"  onkeyup="Suggest(this,'list_assign')" id="assign" name="assign" class="form-control" >
+                                <ul class="list_assign"  id="list_assign" style="position: fixed;z-index: 100;">
+                                <% data.members.forEach((value, index, array) => { %>
+                                  <li onclick="getValue(this,'assign','list_asiign')"><%= value.name %> </li>
+                              <% }) %>   
+                                </ul>
+                            </div>
+                            <div class="col-md-2">
+                              <label for="point">point</label>
+                              <input  type="number" id="point" name="point" class="form-control" >
+                              
+                          </div>
+                          <div class="col-md-12">
+                            <label for="description">Description</label>
+                            <textarea name="description" id="description" style="font-size: 14px; border:0" cols="20" rows="5"></textarea>
+                            <hr>
+                            
+                        </div>
+                              <form action="/sprint/<%= data.projectId %>/create" method="POST">
+                                  <input id="taskName" name="taskName"  type="hidden">
+                                  <input id="assign" name="assign"  type="hidden">
+                                  <input id="point" name="point"  type="hidden">
+                                  <input id="description" name="description"  type="hidden">
+                                  <input class="btn btn-primary btn-round" onclick="createSprint()" style="height: 30px;width:100px; padding:2px; bottom:5px;right:6px;position: absolute;" id="submit"  name="submit" type="submit" value="Create">
+                              </form>
+                          </div>                          
+                       
+                      </div>
+                  </div>
+                  <% } %> 
+
+                  
+
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+     
+    </div>
+  </div>
+  
+     
+  
+  <%- include('footer'); -%> 

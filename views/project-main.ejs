@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8"/>
+  <title>
+    Resolve
+  </title>
+  <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no' name='viewport' />
+  <!--     Fonts and icons     -->
+  <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700|Material+Icons" />
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <!-- CSS Files -->
+  <link href="/assets/material-dashboard.css?v=2.1.0" rel="stylesheet" />
+  <!-- CSS Just for demo purpose, don't include it in your project -->
+  <link href="/assets/demo.css" rel="stylesheet" />
+</head>
+<body class="dark-edition">
+  <div class="wrapper ">
+    <div class="sidebar" data-color="purple" data-background-color="black" data-image="../assets/img/sidebar-2.jpg">
+      <div class="logo"><a href="/" class="simple-text logo-normal">
+          Resolve
+        </a></div>
+      <div class="sidebar-wrapper">
+        <ul class="nav">
+          <li class="nav-item active">
+            <a class="nav-link " href="/">
+              <i class="material-icons">home</i>
+              <p>Dasboard</p>
+            </a>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link" href="/wiki/<%= data.projectId %>/document">
+              <i class="material-icons">menu_book</i>
+              <p>Enginer wiki</p>
+            </a>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link" href="/sprint/<%= data.project.id %>">
+              <i class="material-icons">trending_up</i>
+              <p>Sprint</p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/project">
+              <i class="material-icons">login</i>
+              <p>back</p>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div class="main-panel">
+      <!-- Navbar -->
+      <nav class="navbar navbar-expand-lg navbar-transparent navbar-absolute fixed-top " id="navigation-example">
+        <div class="container-fluid">
+          <button class="navbar-toggler" type="button" data-toggle="collapse" aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation" data-target="#navigation-example">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="navbar-toggler-icon icon-bar"></span>
+            <span class="navbar-toggler-icon icon-bar"></span>
+            <span class="navbar-toggler-icon icon-bar"></span>
+          </button>
+          <div class="collapse navbar-collapse justify-content-end">
+            <form class="navbar-form">
+              <div class="input-group no-border">
+                <input type="text" value="" class="form-control" placeholder="Search...">
+                <button type="submit" class="btn btn-default btn-round btn-just-icon">
+                  <i class="material-icons">search</i>
+                  <div class="ripple-container"></div>
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </nav>
+
+       <div class="content">
+        <div class="container-fluid">
+          <div class="row">
+            <div class="col-md-12">
+                <div class="card card-plain">
+                  <div class="card-header card-header-success">
+                    <h4 class="card-title mt-0"><%= data.project.name %> </h4>
+                    <p class="card-category"> <%= data.project.description %></p>
+                  </div>
+                  <div  class="card-body">
+                    <div class="table-responsive">
+                      <table class="table table-hover">
+                        <thead class="">
+                          <th>
+                            ID
+                          </th>
+                          <th>
+                            Name
+                          </th>
+                          <th>
+                            Deparment
+                          </th>
+                          <th>
+                            Position
+                          </th>
+                          <th>
+                            Role
+                          </th>
+                          <% if(data.permission){ %> 
+                          <th>
+                            
+                          </th>
+                          <% } %> 
+                        </thead>
+                        <tbody>
+                           <% data.members.forEach((value, index, array) => { %>
+                            <tr>
+                                <td>
+                                  <%= index+1 %> 
+                                </td>
+                                <td>
+                                  <%= value.name %> 
+                                </td>
+                                <td>
+                                  <%= value.department %>
+                                </td>
+                                <td>
+                                  <%= value.position %>
+                                </td>
+                                <td>
+                                  <%= data.team[index].role %>
+                                </td>
+                                <% if(data.permission){ %> 
+                                <td>
+                                    <a href="/project/<%= data.projectId %>/delete/<%= value.id %>">
+                                       <button type="button" style="padding:0" rel="tooltip" title="Remove" class="btn btn-danger btn-link btn-sm">   
+                                      <i class="material-icons">close</i>
+                                     </button> </a>
+                                </td>
+                                <% } %> 
+                              </tr>
+                          <% }) %>
+                 
+
+
+                          <% if(data.permission){ %> 
+                          <tr>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td>
+                              
+                              <a type="button" href="#create-project">
+                                <button type="button" style="padding:0" rel="tooltip" title="Add" class="btn btn-success btn-link btn-sm">   
+                                  <i class="material-icons">add</i>
+                                 </button> </a>
+                          </td>
+                          </tr>
+                          <% } %> 
+                        </tbody>
+                  
+                      </table>
+                      <% if(data.permission){ %> 
+                      <div id="create-project" class="create-project overlay">
+                        <div class="create-project-body">
+                          <a class="create-project-close" href="#">&times;</a>
+                         
+                            <div class="row">
+                                <div class="col-md-9">
+                                    <label for="emailInput">Email</label>
+                                    <input  type="text" id="emailInput" name="emailInput" onkeyup="Suggest(this,'list_email')" class="form-control" >
+                                    <ul class="list_email"  id="list_email">
+                                    <% data.allUser.forEach((value, index, array) => { %>
+                                        <li onclick="getValue(this,'emailInput','list_email')"><%= value.email %> </li>
+
+                                    <% }) %>   
+                                   
+                                    </ul>
+                                </div>
+                                <div class="col-md-3">
+                                    <label for="role">Role</label>
+                                    <input type="text" onkeyup="Suggest(this,'list_role')" id="role" name="role" class="form-control" >
+                                    <ul class="list_role"  id="list_role">
+                                        <li onclick="getValue(this,'role','list_role')">PM</li>
+                                        <li onclick="getValue(this,'role','list_role')">CTO</li>
+                                        <li onclick="getValue(this,'role','list_role')">FE</li>
+                                        <li onclick="getValue(this,'role','list_role')">BE</li>
+                                        <li onclick="getValue(this,'role','list_role')">QA</li>
+                                        <li onclick="getValue(this,'role','list_role')">QC</li>
+                                        <li onclick="getValue(this,'role','list_role')">FS</li>
+                                        <li onclick="getValue(this,'role','list_role')">TL</li>
+                                        </ul>
+                                </div>
+                                <form action="/project/<%= data.projectId %>/invite" method="POST">
+                                    <input id="memberEmail" name="memberEmail"  type="hidden">
+                                    <input id="memberRole" name="memberRole"  type="hidden">
+                                    <input class="btn btn-primary btn-round" onclick="InviteMember()" style="height: 30px;width:100px; padding:2px; bottom:5px;right:6px;position: absolute;" id="submit"  name="submit" type="submit" value="Invite">
+                                </form>
+                            </div>                          
+                         
+                        </div>
+                    </div>
+                    <% } %> 
+                  </div>
+                </div>
+              </div>
+          </div>
+        </div>
+      </div>
+      
+      <%- include('footer'); -%> 

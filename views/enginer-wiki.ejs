@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8"/>
+  <title>
+    Resolve
+  </title>
+  <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no' name='viewport' />
+  <!--     Fonts and icons     -->
+  <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700|Material+Icons" />
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <!-- CSS Files -->
+  <link href="/assets/material-wiki.css" rel="stylesheet" />
+  <!-- CSS Just for demo purpose, don't include it in your project -->
+
+  <link href="/assets/editor.css" rel="stylesheet" type="text/css" />
+</head>
+<body class="dark-edition">
+  <div class="wrapper ">
+    <div class="sidebar" data-color="purple" data-background-color="black" >
+      <div class="logo"><a href="/" class="simple-text logo-normal">
+          Resolve
+        </a></div>
+      <div class="sidebar-wrapper">
+        <ul class="nav">
+          <li class="nav-item active">
+            <a class="nav-link " href="/wiki/<%= data.project %>/document">
+              <i class="material-icons">text_snippet</i>
+              <p>Documentation</p>
+            </a>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link" href="/wiki/<%= data.project %>/infrastructure">
+              <i class="material-icons">foundation
+              </i>
+              <p>infrastructure</p>
+            </a>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link" href="/wiki/<%= data.project %>/guide">
+              <i class="material-icons">build</i>
+              <p>Guide & progress</p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/wiki/<%= data.project %>/code-base">
+              <i class="material-icons">code</i>
+              <p>code base</p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/project/<%= data.project %> ">
+              <i class="material-icons">login</i>
+              <p>back</p>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div class="main-panel">
+      <!-- Navbar -->
+      <nav class="navbar navbar-expand-lg navbar-transparent navbar-absolute fixed-top " id="navigation-example">
+        <div class="container-fluid">
+          <button class="navbar-toggler" type="button" data-toggle="collapse" aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation" data-target="#navigation-example">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="navbar-toggler-icon icon-bar"></span>
+            <span class="navbar-toggler-icon icon-bar"></span>
+            <span class="navbar-toggler-icon icon-bar"></span>
+          </button>
+          <div class="collapse navbar-collapse justify-content-end">
+            <form class="navbar-form">
+              <div class="input-group no-border">
+                <input type="text" value="" class="form-control" placeholder="Search...">
+                <button type="submit" class="btn btn-default btn-round btn-just-icon">
+                  <i class="material-icons">search</i>
+                  <div class="ripple-container"></div>
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </nav>
+
+
+       <div class="content">
+        <div class="container-fluid">
+          <div class="row">
+            <div class="col-md-12" >
+
+              <textarea id="editor" class="editor" disabled>
+                  <%= data.docs %>
+              </textarea >
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-sm-1 offset-sm-10">
+              <form action="" method="POST">
+                <input type="hidden" name="content" id="data">
+                <input onclick="getWiki()" class="btn btn-primary btn-round" style="height: 30px;width:100px; padding:2px;" type="submit" name="submit" value="Update">
+              </form>
+            
+            </div>
+          </div>
+        </div>
+      </div>
+
+  <script src="/assets/build-editor.js"></script>
+  <script>ClassicEditor
+    .create( document.querySelector( '.editor' ), {
+      
+      toolbar: {
+        items: [
+          'heading',
+          '|',
+          'bold',
+          'italic',
+          'link',
+          'bulletedList',
+          'numberedList',
+          '|',
+          'indent',
+          'outdent',
+          '|',
+          'fontColor',
+          'insertTable',
+          'code',
+          'blockQuote',
+          'alignment',
+          'codeBlock',
+          'htmlEmbed',
+          'undo',
+          'redo'
+        ]
+      },
+      language: 'en',
+      table: {
+        contentToolbar: [
+          'tableColumn',
+          'tableRow',
+          'mergeTableCells'
+        ]
+      },
+      licenseKey: '',
+    
+        
+      
+    } )
+    .then( editor => {
+      window.editor = editor;
+    } )
+    .catch( error => {
+      console.error( 'Oops, something went wrong!' );
+      console.error( error );
+    } );
+ 
+  </script>
+    <%- include('footer'); -%> 
